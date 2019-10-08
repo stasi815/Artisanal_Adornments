@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/shopping_lists'>
+    <fieldset>
+    <legend>New Shopping List</legend>
+    <!-- TITLE -->
+    <p>
+        <label for='title'>Title</label><br>
+        <input type='text' name='title' />
+    </p>
+    <p>
+        <label for='description'>Description</label><br>
+        <input type='text' name='description' />
+    </p>
+        <!-- IMAGE LINKS -->
+    <p>
+        <label for='list-images'>Items</label><br>
+        <p>Add images in the form of 'https://youtube.com/embed/KEY'. Separate with a newline.</p>
+        <textarea id='list-images' name='images' rows='10'></textarea>
+    </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Shopping List</button>
+    </p>
+</form>
+{% endblock %}
