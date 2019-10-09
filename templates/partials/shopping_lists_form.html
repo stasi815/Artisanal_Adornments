@@ -1,0 +1,26 @@
+    <fieldset>
+        <legend>Edit Your Shopping List</legend>
+        <!-- TITLE -->
+        <p>
+            <label for='shopping_list-title'>Title</label><br>
+            <input id='shopping_list-title' type='text' name='title' value='{{ shopping_list.title }}'/>
+        </p>
+
+        <!-- DESCRIPTION -->
+        <p>
+            <label for='description'>Description</label><br>
+            <input id='description' type='text' name='description' value='{{ shopping_list.description }}' />
+        </p>
+
+        <!-- VIDEO LINKS -->
+        <p>
+            <label for='shopping_list-videos'>Images</label><br>
+            <p>Add videos in the form of 'https://youtube.com/embed/KEY'. Separate with a newline.</p>
+            <textarea id='shopping_list-images' name='images' rows='10'>{{ "\n".join(shopping_list.images) }}</textarea>
+        </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Shopping List</button>
+    </p>
