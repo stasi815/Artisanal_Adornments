@@ -1,25 +1,25 @@
 <fieldset>
     <!-- TITLE -->
-    <p>
+    <div class='form-group'>
         <label for='shopping_list-title'>Title</label><br>
-        <input id='shopping_list-title' type='text' name='title' value='{{ shopping_list.title }}'/>
-    </p>
+        <input class='form-control' id='shopping_list-title' type='text' name='title' value='{{ shopping_list.title }}'/>
+    </div>
 
     <!-- DESCRIPTION -->
-    <p>
+    <div class='form-group'>
         <label for='description'>Description</label><br>
-        <input id='description' type='text' name='description' value='{{ shopping_list.description }}' />
-    </p>
+        <input class='form-control' id='description' type='text' name='description' value='{{ shopping_list.description }}' />
+    </div>
 
     <!-- VIDEO LINKS -->
-    <p>
+    <div class='form-group'>
         <label for='shopping_list-videos'>Images</label><br>
-        <p>Add videos in the form of 'https://youtube.com/embed/KEY'. Separate with a newline.</p>
-        <textarea id='shopping_list-images' name='images' rows='10'>{{ "\n".join(shopping_list.images) }}</textarea>
-    </p>
+        <p class='text-muted'>Add videos in the form of 'https://youtube.com/embed/KEY'. Separate with a newline.</p>
+        <textarea class='form-control' id='shopping_list-images' name='images' rows='10'>{{ "\n".join(shopping_list.images) }}</textarea>
+    </div>
 </fieldset>
 
 <!-- BUTTON -->
 <p>
-    <button type='submit'>Save Shopping List</button>
+    <button class='btn btn-primary' type='submit'>Save Shopping List</button>
 </p>

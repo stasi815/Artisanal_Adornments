@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='/shopping_lists/{{shopping_list._id}}'>
-    <legend>Edit Your Shopping List</legend>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method='POST' action='/shopping_lists/{{shopping_list._id}}'>
+            <legend>Edit Your Shopping List</legend>
 
-    {% include 'partials/shopping_lists_form.html' %}
+            {% include 'partials/shopping_lists_form.html' %}
 
-</form>
+        </form>
+    </div>
+</div
 {% endblock %}

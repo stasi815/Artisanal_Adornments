@@ -4,8 +4,14 @@
     <h1>Shopping Cart</h1>
     <a href='/shopping_lists/new'>New Shopping List</a>
 
+<div class='row'>
     {% for shopping_list in shopping_lists %}
-        <h2><a href='/shopping_lists/{{ shopping_list._id }}'>{{ shopping_list.title }}</h2>
-        <small>{{ shopping_list.description }}</small>
+        <div class="card"><div class="card-body">
+            <div class='col-md-3'>
+                <h2><a href='/shopping_lists/{{ shopping_list._id }}'>{{ shopping_list.title }}</h2>
+                <small>{{ shopping_list.description }}</small>
+            </div>
+        </div></div>
     {% endfor %}
+</div>
 {% endblock %}

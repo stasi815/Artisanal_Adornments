@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method='POST' action='/shopping_lists'>
-        <legend>New Shopping List</legend>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method='POST' action='/shopping_lists'>
+            <legend>New Shopping List</legend>
 
-        {% include 'partials/shopping_lists_form.html' %}
+            {% include 'partials/shopping_lists_form.html' %}
 
-    </form>
-    <form action='/'>
-        <div class='form-group'>
-            <button  class='btn btn-primary' type='submit'>Cancel</button>
-        </div>
-    </form>
+        </form>
+        <form action='/'>
+            <div class='form-group'>
+                <button  class='btn btn-primary' type='submit'>Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
