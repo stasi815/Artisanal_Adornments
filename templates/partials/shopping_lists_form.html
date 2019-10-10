@@ -11,11 +11,12 @@
         <input class='form-control' id='description' type='text' name='description' value='{{ shopping_list.description }}' />
     </div>
 
-    <!-- VIDEO LINKS -->
+    <!-- IMAGE LINKS -->
     <div class='form-group'>
-        <label for='shopping_list-videos'>Images</label><br>
+        <label for='shopping_list-images'>Images</label><br>
         <p class='text-muted'>Add images of your items</p>
-        <textarea class='form-control' id='shopping_list-images' name='images' rows='10'>{{ "\n".join(shopping_list.images) }}</textarea>
+        Image URL: <input type="text" name="img_url"><br>
+        <textarea class='form-control' id='shopping_list-images' name='images' rows='5'>{{ "\n".join(shopping_list.images) }}</textarea>
     </div>
 </fieldset>
 
