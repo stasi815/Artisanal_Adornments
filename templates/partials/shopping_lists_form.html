@@ -15,9 +15,8 @@
     <div class='form-group'>
         <label for='shopping_list-images'>Images</label><br>
         <p class='text-muted'>Add images of your items</p>
-        Image URL: <input type="text" name="img_url"><br>
-        <div> class='form-control' id='shopping_list-images' name='images' rows='5'>{{ "\n".join(shopping_list.images) }}</div>
-    </div>
+        <div>Image URL: <input type="text" name="img_url"><br>{{ "\n".join(shopping_list.images) }}</div>
+    </div><br>
 </fieldset>
 
 <!-- BUTTON -->
