@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='/shopping_lists'>
-    {% include 'partials/shopping_lists_form.html' %}
+    <form method='POST' action='/shopping_lists'>
+        <legend>New Shopping List</legend>
 
-</form>
-<form action='/'>
-    <div class='form-group'>
-        <button  class='btn btn-primary' type='submit'>Cancel</button>
-    </div>
-</form>
+        {% include 'partials/shopping_lists_form.html' %}
+
+    </form>
+    <form action='/'>
+        <div class='form-group'>
+            <button  class='btn btn-primary' type='submit'>Cancel</button>
+        </div>
+    </form>
 {% endblock %}
