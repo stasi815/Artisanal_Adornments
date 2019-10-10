@@ -36,7 +36,7 @@ def shopping_lists_submit():
     shopping_list = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'images': request.form.get('images').split()
+        'images': request.form.get('images')
     }
     shopping_list_id = shopping_lists.insert_one(shopping_list).inserted_id
     return redirect(url_for('shopping_lists_show', shopping_list_id=shopping_list_id))
@@ -59,7 +59,7 @@ def shopping_lists_update(shopping_list_id):
     updated_shopping_list = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'images': request.form.get('images').split()
+        'images': request.form.get('images')
     }
     shopping_lists.update_one(
         {'_id': ObjectId(shopping_list_id)},
