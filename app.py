@@ -7,6 +7,19 @@ host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Artisanal_Adornm
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
 shopping_lists = db.shopping_lists
+inventory = db.inventory
+
+inventory.drop()
+inventory.insert_many([
+    {"name":"Long Rainbow Serpent", "category":"necklace", "price":"$200.00", "images":"static/colar3.jpg"},
+    {"name":"Rainbow Supernova", "category":"necklace", "price":"$160.00", "images":"static/necklace1.jpg"},
+    {"name":"Green Serpent", "category":"necklace", "price":"$160.00", "images":"static/necklace2.jpeg"},
+    {"name":"Fire Lizard", "category":"wristband", "price":"$125.00", "images":"static/wristband1.jpg"},
+    {"name":"Fire Tide", "category":"wristband", "price":"$125.00", "images":"static/wristband2.jpg"},
+    {"name":"Amazon Sunset", "category":"earrings", "price":"$100.00", "images":"static/yawanawa_brinco2.jpg"},
+    {"name":"Wacomaya", "category":"earrings", "price":"$100.00", "images":"static/yawanawaearrings1.jpg"}
+    ])
+
 
 app = Flask(__name__)
 
@@ -14,11 +27,6 @@ app = Flask(__name__)
 def index():
     """Return homepage."""
     return render_template('home.html', msg='Welcome to the shop!!')
-
-# items = [
-#     { 'title': 'Yawanawa Earrings', 'description': 'Blue and Green beads' },
-#     { 'title': 'Yawanawa Necklace', 'description': '6 inches long, red, yellow, black' }
-# ]
 
 @app.route('/shopping_lists')
 def shopping_lists_index():
@@ -36,7 +44,7 @@ def shopping_lists_submit():
     shopping_list = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'images': request.form.get('images')
+        'items': []
     }
     shopping_list_id = shopping_lists.insert_one(shopping_list).inserted_id
     return redirect(url_for('shopping_lists_show', shopping_list_id=shopping_list_id))
@@ -59,7 +67,6 @@ def shopping_lists_update(shopping_list_id):
     updated_shopping_list = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'images': request.form.get('images')
     }
     shopping_lists.update_one(
         {'_id': ObjectId(shopping_list_id)},
@@ -71,6 +78,30 @@ def shopping_lists_delete(shopping_list_id):
     """Delete one playlist."""
     shopping_lists.delete_one({'_id': ObjectId(shopping_list_id)})
     return redirect(url_for('shopping_lists_index'))
+
+@app.route('/add', methods=['POST'])
+def add_item_to_list():
+    """Add inventory item to selected list"""
+    item = {
+        'name': request.form.get('name'),
+        'category': request.form.get('category'),
+        'price': request.form.get('price'),
+        'images': request.form.get('images')
+    }
+    shopping_list_id = request.form.get('shopping_list')
+
+    shopping_lists.update_one(
+        {'_id': ObjectId(shopping_list_id)},
+        {'$set': {'items': [item]}})
+    return redirect(url_for('shopping_lists_show', shopping_list_id=shopping_list_id))
+
+
+@app.route('/inventory')
+def inventory_index():
+    """Show inventory."""
+    return render_template('inventory.html', inventory=inventory.find(), shopping_lists=shopping_lists.find())
+
+
 
 if __name__ == '__main__':
   app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))

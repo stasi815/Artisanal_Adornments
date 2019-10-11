@@ -9,10 +9,11 @@
     <div class='col-sm-6 col-sm-offset-3'>
         <h1>{{ shopping_list.title }}</h1>
         <h2>{{ shopping_list.description }}</h2>
-        {% for image in shopping_list %}
-            <div class="card"><div class="card-body">
-                <img width='420' height='315' src='{{ shopping_list.images }}'>
-            </div></div>
+        {% for item in shopping_list.list_items %}
+            <img src="/{{ item.images }}" width="350px" height="350px"/><br>
+            {{ item.name }}
+            {{ item.category }}
+            {{ item.price }}
         {% endfor %}
         <p><form action='/shopping_lists/{{ shopping_list._id }}/edit'>
         <button class='btn btn-primary' type='submit'>Edit</button>

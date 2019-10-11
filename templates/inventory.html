@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<h1>Inventory</h1>
+    {% for item in inventory %}
+        <img src="/{{ item.images }}" width="350px" height="350px"/><br>
+        {{ item.name }}
+        {{ item.category }}
+        {{ item.price }}
+        <form method='POST' action='/add'>
+            <div class='form-group'>
+                <select name="shopping_list" >
+                    {% for list in shopping_lists %}
+                        <option value="{{list._id}}">{{list.title}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class='form-group'>
+                <input type='hidden' value='{{ item._id }}' name='item_id'/>
+                <input type='hidden' value='{{ item.name }}' name='name'/>
+                <input type='hidden' value='{{ item.price }}' name='price'/>
+                <input type='hidden' value='{{ item.category }}' name='category'/>
+                <input type='hidden' value='{{ item.images }}' name='images'/>
+                <button  class='btn btn-primary' type='submit'>Add to Shopping List</button>
+            </div>
+        </form>
+    {% endfor %}
+</div>
+{% endblock %}

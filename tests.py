@@ -16,7 +16,6 @@ sample_form_data = {
     'images': '\n'.join(sample_shopping_list['images'])
 }
 
-
 class Shopping_ListsTests(TestCase):
     """Flask tests."""
 

@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{{ msg }}</h1>
-    <p>
-    <a href='/shopping_lists/new'>New Shopping List</a>
-    </p>
-    <p>
-    <a href='/shopping_lists'>See My Shopping Lists</a>
-    <p>
-    <div>
-        <img width=640 height=360 src='https://i.ytimg.com/vi/Wq8e3M8rJOg/maxresdefault.jpg'>
-    </div>
-
+    <fieldset>
+        <div>
+            <img width=640 height=360 src='https://i.ytimg.com/vi/Wq8e3M8rJOg/maxresdefault.jpg'>
+        </div>
+        <h1>{{ msg }}</h1>
+        <p>
+        <a href='/shopping_lists/new'>New Shopping List</a>
+        </p>
+        <p>
+        <a href='/shopping_lists'>See My Shopping Lists</a>
+        <p>
+        <p>
+        <a href='/inventory'>See Inventory</a>
+        </p>
+    </fieldset>
 {% endblock %}
