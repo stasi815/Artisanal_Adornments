@@ -79,6 +79,11 @@ def shopping_lists_delete(shopping_list_id):
     shopping_lists.delete_one({'_id': ObjectId(shopping_list_id)})
     return redirect(url_for('shopping_lists_index'))
 
+@app.route('/inventory')
+def inventory_index():
+    """Show inventory."""
+    return render_template('inventory.html', inventory=inventory.find(), shopping_lists=shopping_lists.find())
+
 @app.route('/add', methods=['POST'])
 def add_item_to_list():
     """Add inventory item to selected list"""
@@ -94,12 +99,6 @@ def add_item_to_list():
         {'_id': ObjectId(shopping_list_id)},
         {'$set': {'items': [item]}})
     return redirect(url_for('shopping_lists_show', shopping_list_id=shopping_list_id))
-
-
-@app.route('/inventory')
-def inventory_index():
-    """Show inventory."""
-    return render_template('inventory.html', inventory=inventory.find(), shopping_lists=shopping_lists.find())
 
 
 
